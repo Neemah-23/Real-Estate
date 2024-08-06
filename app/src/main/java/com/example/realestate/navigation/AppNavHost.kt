@@ -9,6 +9,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.realestate.ui.theme.screens.about.AboutScreen
 import com.example.realestate.ui.theme.screens.detail.DetailScreen
 import com.example.realestate.ui.theme.screens.home.HomeScreen
+import com.example.realestate.ui.theme.screens.splash.splashscreen
 
 @Composable
 fun AppNavHost(
@@ -32,6 +33,9 @@ fun AppNavHost(
 
         composable(ROUT_ABOUT) {
             AboutScreen(navController = navController)}
+
+        composable(ROUT_SPLASH) {
+            splashscreen(navController = navController)}
 
 
 
