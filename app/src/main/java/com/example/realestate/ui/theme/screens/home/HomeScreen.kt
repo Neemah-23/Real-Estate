@@ -76,7 +76,7 @@ fun HomeScreen(navController: NavController){
             fontSize = 20.sp,
         )
 
-        Spacer(modifier = Modifier.height(300.dp))
+        Spacer(modifier = Modifier.height(80.dp))
 
         Button(
             onClick = { navController.navigate(ROUT_DETAIL)},
