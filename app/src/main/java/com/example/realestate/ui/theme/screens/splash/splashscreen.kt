@@ -13,6 +13,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -21,6 +22,8 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.realestate.R
 import com.example.realestate.navigation.ROUT_HOME
+import com.example.realestate.ui.theme.Pink80
+import com.example.realestate.ui.theme.lightpurple
 import com.example.realestate.ui.theme.mybackground
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -31,23 +34,21 @@ fun splashscreen(navController: NavController){
 
     Column(modifier = Modifier
         .fillMaxSize()
-        .background(mybackground),
+        .background(lightpurple),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
 
     ) {
         var coroutineScope = rememberCoroutineScope()
         coroutineScope.launch {
-            delay(2000)
+            delay(4000)
             navController.navigate(ROUT_HOME)
         }
 
 
-
-
         Image(
 
-            painter = painterResource(id = R.drawable.home) ,
+            painter = painterResource(id = R.drawable.home3) ,
             contentDescription = "home",
             modifier = Modifier
                 .size(300.dp)
@@ -59,10 +60,7 @@ fun splashscreen(navController: NavController){
 
     }
 
-
 }
-
-
 
 @Composable
 @Preview(showBackground = true)

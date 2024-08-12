@@ -19,10 +19,13 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.Face
+import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material3.Badge
 import androidx.compose.material3.BadgedBox
@@ -51,7 +54,9 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontVariation
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -69,7 +74,7 @@ import com.example.realestate.ui.theme.screens.property.bottomNavItems
 fun IntentScreen(navController: NavController){
 
     val mContext= LocalContext.current
-    Column(modifier = Modifier.fillMaxSize().padding(start = 10.dp)){
+    Column(modifier = Modifier.fillMaxSize()){
         var selected by remember { mutableIntStateOf(0) }
 
         Scaffold(
@@ -119,8 +124,6 @@ fun IntentScreen(navController: NavController){
                 TopAppBar(title = { Text(text = "Magic Bricks") },
                     colors = TopAppBarDefaults.topAppBarColors(Color.Cyan),
 
-
-
                     )
 
             },
@@ -143,11 +146,14 @@ fun IntentScreen(navController: NavController){
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(top = 80.dp),
-
+                        .padding(top = 70.dp),
 
                     ) {
-                    Text(text = "Real Estate")
+                    Text(text = "Real Estate",
+
+                        fontWeight = FontWeight.Bold
+
+                    )
 
                     //Start of row
 
@@ -155,8 +161,8 @@ fun IntentScreen(navController: NavController){
                         //Card 1
                         Card(
                             modifier = Modifier
-                                .height(180.dp)
-                                .width(200.dp)
+                                .height(130.dp)
+                                .width(120.dp)
                         ) {
                             Box(
                                 modifier = Modifier.fillMaxSize(),
@@ -187,10 +193,10 @@ fun IntentScreen(navController: NavController){
 
                     Column(modifier = Modifier
                         .padding(start = 20.dp)) {
-                        Text(text = "Visit Lavington", fontSize = 20.sp)
+                        Text(text = "Visit Lavington", fontSize = 15.sp)
                         Text(text = "The best property you can find.")
 
-                        Spacer(modifier = Modifier.height(30.dp))
+                        Spacer(modifier = Modifier.height(10.dp))
 
                         Row {
                             Icon(
@@ -223,7 +229,11 @@ fun IntentScreen(navController: NavController){
                         Text(text = "54,789 reviews")
 
                         Button(
-                            onClick = { /*TODO*/ },
+                            onClick = {
+                                val callIntent=Intent(Intent.ACTION_DIAL)
+                                callIntent.data="tel:0717083337".toUri()
+                                mContext.startActivity(callIntent)
+                             },
                             colors = ButtonDefaults.buttonColors(Color.Black),
                             shape = RoundedCornerShape(10.dp)
 
@@ -235,8 +245,7 @@ fun IntentScreen(navController: NavController){
                         }
                     //End of row
 
-                    Spacer(modifier = Modifier.height(30.dp))
-
+                    Spacer(modifier = Modifier.height(20.dp))
 
                     //STK
                     Button(
@@ -255,15 +264,14 @@ fun IntentScreen(navController: NavController){
                     ) {
                         Text(text = "STK")
                     }
-                    Spacer(modifier = Modifier.height(30.dp))
-
+                    Spacer(modifier = Modifier.height(15.dp))
 
                     //EMAIL
                     Button(
                         onClick = {
                             val shareIntent = Intent(Intent.ACTION_SEND)
                             shareIntent.type = "text/plain"
-                            shareIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf("akinyiglory2@gmail.com"))
+                            shareIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf("ngolesianeemah@gmail.com"))
                             shareIntent.putExtra(Intent.EXTRA_SUBJECT, "subject")
                             shareIntent.putExtra(Intent.EXTRA_TEXT, "Hello, this is the email body")
                             mContext.startActivity(shareIntent)
@@ -277,14 +285,13 @@ fun IntentScreen(navController: NavController){
                     ) {
                         Text(text = "EMAIL")
                     }
-                    Spacer(modifier = Modifier.height(30.dp))
-
+                    Spacer(modifier = Modifier.height(15.dp))
 
                     //CALL
                     Button(
                         onClick = {
                             val callIntent=Intent(Intent.ACTION_DIAL)
-                            callIntent.data="tel:0720245837".toUri()
+                            callIntent.data="tel:0717083337".toUri()
                             mContext.startActivity(callIntent)
                         },
                         modifier = Modifier
@@ -296,7 +303,7 @@ fun IntentScreen(navController: NavController){
                     ) {
                         Text(text = "CALL")
                     }
-                    Spacer(modifier = Modifier.height(30.dp))
+                    Spacer(modifier = Modifier.height(15.dp))
 
                     //SHARE
                     Button(
@@ -315,7 +322,7 @@ fun IntentScreen(navController: NavController){
                     ) {
                         Text(text = "SHARE")
                     }
-                    Spacer(modifier = Modifier.height(30.dp))
+                    Spacer(modifier = Modifier.height(15.dp))
 
                     //SMS
                     Button(
@@ -334,7 +341,7 @@ fun IntentScreen(navController: NavController){
                     ) {
                         Text(text = "SMS")
                     }
-                    Spacer(modifier = Modifier.height(30.dp))
+                    Spacer(modifier = Modifier.height(15.dp))
 
                     //CAMERA
                     Button(
@@ -355,7 +362,7 @@ fun IntentScreen(navController: NavController){
                     ) {
                         Text(text = "CAMERA")
                     }
-                    Spacer(modifier = Modifier.height(30.dp))
+                    Spacer(modifier = Modifier.height(15.dp))
 
 
 
@@ -367,12 +374,9 @@ fun IntentScreen(navController: NavController){
 
 }
 
-
-
-
 val bottomNavItems = listOf(
     BottomNavItem(
-        title = "Home",
+        title = "Homepage",
         route="home",
         selectedIcon=Icons.Filled.Home,
         unselectedIcon=Icons.Outlined.Home,
@@ -380,30 +384,25 @@ val bottomNavItems = listOf(
         badges=0
     ),
 
-
-
     BottomNavItem(
-        title = "Login",
-        route="login",
-        selectedIcon=Icons.Filled.Person,
-        unselectedIcon=Icons.Outlined.Person,
+        title = "Details",
+        route="detail",
+        selectedIcon=Icons.Filled.Info,
+        unselectedIcon=Icons.Outlined.Info,
         hasNews = true,
         badges=5
     ),
 
     BottomNavItem(
-        title = "Signup",
-        route="signup",
-        selectedIcon=Icons.Filled.Face,
-        unselectedIcon= Icons.Outlined.Face,
+        title = "Property",
+        route="property",
+        selectedIcon=Icons.Filled.Favorite,
+        unselectedIcon= Icons.Outlined.Favorite,
         hasNews = true,
         badges=1
     ),
 
-
     )
-
-
 
 data class BottomNavItem(
     val title :String,
@@ -413,9 +412,6 @@ data class BottomNavItem(
     val hasNews :Boolean,
     val badges :Int
 )
-
-
-
 
 @Composable
 @Preview(showBackground = true)

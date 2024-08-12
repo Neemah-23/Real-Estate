@@ -43,7 +43,7 @@ fun HomeScreen(navController: NavController){
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(lightpurple),
+            .background(Color.Cyan),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
         
@@ -76,7 +76,7 @@ fun HomeScreen(navController: NavController){
             fontSize = 20.sp,
         )
 
-        Spacer(modifier = Modifier.height(80.dp))
+        Spacer(modifier = Modifier.height(60.dp))
 
         Button(
             onClick = { navController.navigate(ROUT_DETAIL)},

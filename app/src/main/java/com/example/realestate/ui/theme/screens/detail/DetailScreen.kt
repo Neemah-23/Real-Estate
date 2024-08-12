@@ -12,11 +12,14 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.ShoppingCart
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -45,6 +48,9 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.realestate.R
+import com.example.realestate.navigation.ROUT_DETAIL
+import com.example.realestate.navigation.ROUT_INTENT
+import com.example.realestate.navigation.ROUT_PROPERTY
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -190,6 +196,27 @@ fun DetailScreen(navController: NavController){
 
             //End of card
         }
+
+        Spacer(modifier = Modifier.height(30.dp))
+
+        Button(
+            onClick = { navController.navigate(ROUT_PROPERTY)},
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 20.dp, end = 20.dp)
+                .height(50.dp),
+            colors = ButtonDefaults.buttonColors(Color.Black),
+            shape = RoundedCornerShape(10.dp)
+
+
+        ) {
+
+            Text(text = "Continue")
+
+        }
+
+
+
 
     }
 }
